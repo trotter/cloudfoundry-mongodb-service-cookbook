@@ -7,7 +7,7 @@ default[:cloudfoundry_mongodb_service][:gateway][:pid_file] = File.join(node.clo
 default[:cloudfoundry_mongodb_service][:gateway][:log_file] = File.join(node.cloudfoundry_common.log_dir, "mongodb_gateway.log")
 
 # Log level for the msyql service gateway.
-default[:cloudfoundry_mongodb_service][:gateway][:log_level] = "debug"
+default[:cloudfoundry_mongodb_service][:gateway][:log_level] = "info"
 
 # TODO (trotter): Find out what this does.
 default[:cloudfoundry_mongodb_service][:gateway][:node_timeout] = 30
