@@ -1,0 +1,17 @@
+---
+cloud_controller_uri: <%= node.cloudfoundry_cloud_controller.server.api_uri %>
+service:
+  name: mongodb
+  version: "2.0"
+  description: 'MongoDB NoSQL store'
+  plans: ['free']
+  tags: ['mongodb', 'mongodb-2.0', 'nosql']
+host: localhost
+node_timeout: <%= node.cloudfoundry_mongodb_service.gateway.node_timeout %>
+index: 0
+token: <%= node.cloudfoundry_common.service_token %>
+mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node.cloudfoundry_common.nats_server.host %>:<%= node.nats_server.port %>/
+pid: <%= node.cloudfoundry_mongodb_service.gateway.pid_file %>
+logging:
+  level: <%= node.cloudfoundry_mongodb_service.gateway.log_level %>
+  file: <%= node.cloudfoundry_mongodb_service.gateway.log_file %>

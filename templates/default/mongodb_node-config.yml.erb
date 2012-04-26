@@ -1,0 +1,20 @@
+---
+capacity: <%= node.cloudfoundry_mongodb_service.node.capacity%>
+plan: free
+local_db: sqlite3:<%= node.cloudfoundry_mongodb_service.node.base_dir %>/mongodb_node.db
+mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node.cloudfoundry_common.nats_server.host %>:<%= node.nats_server.port %>/
+index: <%= node.cloudfoundry_mongodb_service.node[:index] %>
+base_dir: <%= node.cloudfoundry_mongodb_service.node.instances_dir %>
+mongod_log_dir: <%= node.cloudfoundry_mongodb_service.node.db_logs_dir %>
+pid: <%= node.cloudfoundry_mongodb_service.node.pid_file %>
+max_memory: <%= node.cloudfoundry_mongodb_service.node.max_memory %>
+node_id: mongodb_node_<%= node.cloudfoundry_mongodb_service.node[:index] %>
+mongod_path: /usr/bin/mongod
+mongorestore_path: /usr/bin/mongorestore
+port_range:
+  first: <%= node.cloudfoundry_mongodb_service.node.port_range[:first] %>
+  last: <%= node.cloudfoundry_mongodb_service.node.port_range[:last] %>
+migration_nfs: <%= node.cloudfoundry_mongodb_service.node.migration_nfs %>
+logging:
+  level: <%= node.cloudfoundry_mongodb_service.node.log_level %>
+  file: <%= node.cloudfoundry_mongodb_service.node.log_file %>
